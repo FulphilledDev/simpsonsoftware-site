@@ -19,20 +19,7 @@ public class AdminSettingsService(
     public async Task<AdminSettingsDto> GetAsync(CancellationToken ct = default)
     {
         var settings = await GetOrCreateAsync(ct);
-
-        // Always derive the resume URL from the active ResumeVersion so it points to
-        // the authenticated download endpoint regardless of what is stored in the DB.
-        var activeResume = await db.ResumeVersions.FirstOrDefaultAsync(v => v.IsActive, ct);
-        string? resolvedResumeUrl = null;
-        if (activeResume is not null)
-        {
-            var apiBase = !string.IsNullOrEmpty(_azure.ApiBaseUrl)
-                ? _azure.ApiBaseUrl.TrimEnd('/')
-                : _azure.LocalDevBaseUrl.TrimEnd('/');
-            resolvedResumeUrl = $"{apiBase}/api/settings/resumes/{activeResume.Id}/download";
-        }
-
-        return ToDto(settings, resolvedResumeUrl);
+        return ToDto(settings);
     }
 
     public async Task<AdminSettingsDto> UpdateAsync(UpdateAdminSettingsDto dto, CancellationToken ct = default)
@@ -114,11 +101,11 @@ public class AdminSettingsService(
         return settings;
     }
 
-    private static AdminSettingsDto ToDto(AdminSettings s, string? resumeUrl = null)
+    private static AdminSettingsDto ToDto(AdminSettings s)
     {
         var skills = JsonSerializer.Deserialize<IEnumerable<string>>(s.Skills) ?? [];
         return new AdminSettingsDto(s.Bio, skills, s.ContactEmail, s.LinkedInUrl,
-            s.GitHubUrl, s.TwitterUrl, resumeUrl ?? s.ResumeUrl, s.ProfilePhotoUrl, s.OwnerName, s.OwnerTitle,
+            s.GitHubUrl, s.TwitterUrl, s.ResumeUrl, s.ProfilePhotoUrl, s.OwnerName, s.OwnerTitle,
             s.AppointmentDurationMinutes, s.CompanyName, s.CompanyLogoUrl);
     }
 }
