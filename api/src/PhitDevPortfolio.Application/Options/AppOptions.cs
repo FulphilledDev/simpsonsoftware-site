@@ -29,6 +29,8 @@ public class AzureOptions
     public string BusinessContainerName { get; set; } = "business";
     public string AboutContainerName { get; set; } = "about";
     public string LocalDevBaseUrl { get; set; } = "http://localhost:5000";
+    /// <summary>Full base URL of the API (no trailing slash). Used to build the public resume download link.</summary>
+    public string ApiBaseUrl { get; set; } = string.Empty;
 }
 
 public class GoogleOptions

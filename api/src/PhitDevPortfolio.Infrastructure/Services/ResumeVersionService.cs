@@ -70,11 +70,16 @@ public class ResumeVersionService(
         target.IsActive = true;
         await db.SaveChangesAsync(ct);
 
-        // Sync the active URL into AdminSettings so /api/settings returns it
+        // Sync the public-facing download URL into AdminSettings so /api/settings returns it.
+        // We point to the authenticated download endpoint rather than the raw blob/file URL,
+        // because the resumes container is private (not publicly accessible).
         var settings = await db.AdminSettings.FirstOrDefaultAsync(s => s.Id == 1, ct);
         if (settings is not null)
         {
-            settings.ResumeUrl = target.Url;
+            var apiBase = !string.IsNullOrEmpty(_azure.ApiBaseUrl)
+                ? _azure.ApiBaseUrl.TrimEnd('/')
+                : _azure.LocalDevBaseUrl.TrimEnd('/');
+            settings.ResumeUrl = $"{apiBase}/api/settings/resumes/{target.Id}/download";
             await db.SaveChangesAsync(ct);
         }
 
@@ -128,9 +133,10 @@ public class ResumeVersionService(
 
         if (string.IsNullOrEmpty(_azure.BlobStorageConnectionString))
         {
-            var uri  = new Uri(version.Url);
-            var file = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot",
-                uri.AbsolutePath.TrimStart('/').Replace('/', Path.DirectorySeparatorChar));
+            // Derive the filename from the stored URL and look it up in the uploads directory.
+            // This is resilient to URL format changes (e.g. /resumes/ vs /uploads/resumes/).
+            var fileName = Path.GetFileName(new Uri(version.Url).LocalPath);
+            var file = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "resumes", fileName);
             stream = File.OpenRead(file);
         }
         else

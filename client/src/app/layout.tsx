@@ -42,7 +42,7 @@ async function getSettings() {
   try {
     const res = await fetch(`${API_URL}/api/settings`, { next: { revalidate: 300 } });
     if (!res.ok) return null;
-    return res.json() as Promise<{ companyName: string; companyLogoUrl?: string | null }>;
+    return res.json() as Promise<{ companyName: string; companyLogoUrl?: string | null; resumeUrl?: string | null }>;
   } catch {
     return null;
   }
@@ -64,6 +64,7 @@ export default async function RootLayout({
         <Navbar
           companyName={settings?.companyName ?? "Simpson Software"}
           companyLogoUrl={settings?.companyLogoUrl}
+          resumeUrl={settings?.resumeUrl}
         />
         {children}
         <Analytics />

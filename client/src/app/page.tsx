@@ -202,11 +202,6 @@ export default async function HomePage() {
               <GlowLink href="/projects" variant="cyan" size="lg">View My Work</GlowLink>
               <GlowLink href="/book" variant="outline-cyan" size="lg">Book a Consultation</GlowLink>
             </div>
-            {settings?.resumeUrl && (
-              <GlowLink href={settings.resumeUrl} variant="ghost" size="sm" external className="text-white/40 hover:text-white/70">
-                View My Resume ↗
-              </GlowLink>
-            )}
           </div>
         </div>
 
