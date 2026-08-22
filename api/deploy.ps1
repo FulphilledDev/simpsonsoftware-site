@@ -1,57 +1,114 @@
-$user  = '$simpson-software-api'
-$pass  = 'c8YfGjicw3tspe0vHxlmBR5wDHnf3LvPkgP6vBn1hdgm5vire46SmYHJYb9n'
-# clean=true removes old files first; restart=true restarts the app after deploy
-$uri   = 'https://simpson-software-api-f3cqdsfpedapacbp.scm.westus2-01.azurewebsites.net/api/publish?type=zip&clean=true&restart=true'
-$root  = $PSScriptRoot
+# Deploy the API to Azure App Service.
+#
+# Authentication is Microsoft Entra via the Azure CLI — there is no password in this file,
+# in your environment, or in the repo. Run `az login` once per machine; the session is cached.
+# This works with SCM basic auth turned OFF, which is the point.
+#
+# The subscription is pinned below rather than inherited. A scheduled run picks up whatever
+# `az account set` last left as the default, and this tenant has two similarly-named
+# subscriptions (FireAndIce / FireNIceCream), so inheriting it is a silent-failure risk.
+#
+#   .\deploy.ps1              deploy to the default app below
+#   .\deploy.ps1 -WhatIf      build the zip, skip the upload
 
-# ── Build Linux-compatible zip (exclude runtimes\win and wwwroot local uploads) ──
-Write-Host "Building deploy.zip ..."
+[CmdletBinding(SupportsShouldProcess)]
+param(
+    [string]$AppName       = 'simpson-software-api',
+    [string]$ResourceGroup = 'simpson-software-rg',
+    [string]$Subscription  = 'FireAndIce'
+)
+
+$root       = $PSScriptRoot
 $publishDir = Join-Path $root 'publish'
 $zipPath    = Join-Path $root 'deploy.zip'
-$exclude    = @('runtimes', 'wwwroot', 'appsettings.Development.json')
 
-# Temporarily move excluded folders out
+# ── Preflight ────────────────────────────────────────────────────────────────
+if (-not (Get-Command az -ErrorAction SilentlyContinue)) {
+    Write-Error 'Azure CLI not found. Install it: https://aka.ms/installazurecli'
+    exit 1
+}
+
+$azVersion = az version --query '"azure-cli"' -o tsv 2>$null
+if ($LASTEXITCODE -eq 0 -and $azVersion) {
+    if ([version]($azVersion -replace '[^0-9.].*$') -lt [version]'2.48.1') {
+        Write-Error "Azure CLI $azVersion is too old. Entra-authenticated deploys need 2.48.1+. Run: az upgrade"
+        exit 1
+    }
+} else {
+    Write-Warning 'Could not read the Azure CLI version; continuing.'
+}
+
+az account show --only-show-errors 1>$null 2>$null
+if ($LASTEXITCODE -ne 0) {
+    Write-Error 'Not signed in to Azure. Run: az login'
+    exit 1
+}
+
+# Ask Azure for the real hostname. App Service issues a unique default hostname with a
+# random suffix, so "<app>.azurewebsites.net" is not a safe thing to construct.
+# ($appHost, not $host — $Host is a PowerShell automatic variable and cannot be assigned.)
+$appHost = az webapp show --subscription $Subscription -g $ResourceGroup -n $AppName --query defaultHostName -o tsv 2>$null
+if ($LASTEXITCODE -ne 0 -or -not $appHost) {
+    Write-Error "Cannot see '$AppName' in resource group '$ResourceGroup' under subscription '$Subscription'. List what is there with:  az webapp list --subscription '$Subscription' -o table"
+    exit 1
+}
+Write-Host "Target: $AppName / $ResourceGroup / $Subscription"
+Write-Host "URL:    https://$appHost"
+
+if (-not (Test-Path $publishDir)) {
+    Write-Error "No publish output at $publishDir. Run: dotnet publish src\PhitDevPortfolio.API\PhitDevPortfolio.API.csproj -c Release -o api\publish"
+    exit 1
+}
+
+# ── Build a Linux-compatible zip (exclude runtimes\win and local wwwroot uploads) ──
+Write-Host 'Building deploy.zip ...'
 $moved = @{}
-foreach ($name in @('runtimes', 'wwwroot')) {
-    $src = Join-Path $publishDir $name
-    if (Test-Path $src) {
-        $bak = Join-Path $root "${name}_bak"
-        Move-Item $src $bak
-        $moved[$src] = $bak
+try {
+    foreach ($name in @('runtimes', 'wwwroot')) {
+        $src = Join-Path $publishDir $name
+        if (Test-Path $src) {
+            $bak = Join-Path $root "${name}_bak"
+            Move-Item $src $bak
+            $moved[$src] = $bak
+        }
+    }
+
+    $devCfg = Join-Path $publishDir 'appsettings.Development.json'
+    if (Test-Path $devCfg) { Remove-Item $devCfg }
+
+    Remove-Item $zipPath -Force -ErrorAction SilentlyContinue
+    Compress-Archive -Path "$publishDir/*" -DestinationPath $zipPath -Force
+}
+finally {
+    # restore even if the build above threw, so publish/ is never left gutted
+    foreach ($pair in $moved.GetEnumerator()) {
+        if (Test-Path $pair.Value) { Move-Item $pair.Value $pair.Key }
     }
 }
-$devCfg = Join-Path $publishDir 'appsettings.Development.json'
-if (Test-Path $devCfg) { Remove-Item $devCfg }
 
-Remove-Item $zipPath -Force -ErrorAction SilentlyContinue
-Compress-Archive -Path "$publishDir/*" -DestinationPath $zipPath -Force
+$sizeMb = [math]::Round((Get-Item $zipPath).Length / 1MB, 1)
+Write-Host "Built $zipPath ($sizeMb MB)"
 
-# Restore
-foreach ($pair in $moved.GetEnumerator()) { Move-Item $pair.Value $pair.Key }
-
-$bytes = [System.IO.File]::ReadAllBytes($zipPath)
-Write-Host "Uploading $([math]::Round($bytes.Length / 1MB, 1)) MB ..."
-
-$cred    = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes("${user}:${pass}"))
-$headers = @{
-    Authorization  = "Basic $cred"
-    'Content-Type' = 'application/zip'
+# ── Upload ───────────────────────────────────────────────────────────────────
+if (-not $PSCmdlet.ShouldProcess("$AppName ($ResourceGroup)", 'deploy zip')) {
+    Write-Host 'WhatIf: zip built, upload skipped.'
+    return
 }
 
-try {
-    Add-Type -AssemblyName System.Net.Http
-    $client = New-Object System.Net.Http.HttpClient
-    $client.DefaultRequestHeaders.Authorization = `
-        New-Object System.Net.Http.Headers.AuthenticationHeaderValue('Basic', $cred)
-    $client.Timeout = [TimeSpan]::FromSeconds(300)
+Write-Host "Deploying to $AppName ..."
+az webapp deploy `
+    --subscription $Subscription `
+    --resource-group $ResourceGroup `
+    --name $AppName `
+    --src-path $zipPath `
+    --type zip `
+    --clean true `
+    --restart true `
+    --track-status false
 
-    $content = New-Object System.Net.Http.ByteArrayContent(,$bytes)
-    $content.Headers.ContentType = [System.Net.Http.Headers.MediaTypeHeaderValue]::Parse('application/zip')
-
-    $resp = $client.PostAsync($uri, $content).Result
-    $body = $resp.Content.ReadAsStringAsync().Result
-    Write-Host "Status: $($resp.StatusCode) ($([int]$resp.StatusCode))"
-    if ($body) { Write-Host "Body: $body" }
-} catch {
-    Write-Host "Exception: $($_.Exception.Message)"
+if ($LASTEXITCODE -ne 0) {
+    Write-Error "Deploy failed (az exit $LASTEXITCODE)."
+    exit $LASTEXITCODE
 }
+
+Write-Host "Deployed. https://$appHost" -ForegroundColor Green
