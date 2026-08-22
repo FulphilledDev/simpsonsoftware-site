@@ -5,8 +5,11 @@
 # This works with SCM basic auth turned OFF, which is the point.
 #
 # The subscription is pinned below rather than inherited. A scheduled run picks up whatever
-# `az account set` last left as the default, and this tenant has two similarly-named
-# subscriptions (FireAndIce / FireNIceCream), so inheriting it is a silent-failure risk.
+# `az account set` last left as the default, so inheriting it is a silent-failure risk.
+# Pinned by ID, not name: subscription names are renameable AND cached locally by the CLI,
+# so a name can resolve differently on two machines or after `az account list --refresh`.
+#   380e7b3c-110b-4469-8736-c1f540a313ef  SimpsonSoftware  (was FireNIceCream)
+#   f361201f-f3ae-4ccb-91e3-42d04d16f522  FireAndIce       (pre-migration home)
 #
 #   .\deploy.ps1              deploy to the default app below
 #   .\deploy.ps1 -WhatIf      build the zip, skip the upload
@@ -15,7 +18,7 @@
 param(
     [string]$AppName       = 'simpson-software-api',
     [string]$ResourceGroup = 'simpson-software-rg',
-    [string]$Subscription  = 'FireAndIce'
+    [string]$Subscription  = '380e7b3c-110b-4469-8736-c1f540a313ef'   # SimpsonSoftware
 )
 
 $root       = $PSScriptRoot

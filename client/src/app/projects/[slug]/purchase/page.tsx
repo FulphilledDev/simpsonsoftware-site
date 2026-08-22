@@ -27,14 +27,6 @@ export default async function PurchasePage({ params }: { params: Promise<{ slug:
       points: ["Site, code, hosting and domain transferred", "Domain registered in your name", "30-minute walkthrough, in person or by phone", "Free hosting; domain ≈ $12/yr"],
       accent: "cyan",
     },
-    {
-      key: "keep",
-      title: "Own it, we keep the lights on",
-      price: p.discountActive ? p.discounted : p.full,
-      blurb: "Same transfer, and Philip stays on as technical contact for changes — billed hourly only when you ask for something. No retainer.",
-      points: ["Everything in Own it", "Philip as technical contact", "Edits and updates billed hourly, only on request", "Transfer to you any time you ask"],
-      accent: "purple",
-    },
   ] as const;
 
   return (
@@ -64,7 +56,7 @@ export default async function PurchasePage({ params }: { params: Promise<{ slug:
       </section>
 
       <section className="section-container pb-12">
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="max-w-xl">
           {options.map((o) => (
             <div key={o.key} className={`glass rounded-2xl p-6 sm:p-8 border-t-2 ${o.accent === "cyan" ? "border-t-neon-cyan/50" : "border-t-neon-purple/50"} flex flex-col gap-4`}>
               <div>
@@ -97,7 +89,7 @@ export default async function PurchasePage({ params }: { params: Promise<{ slug:
           ))}
         </div>
         <p className="text-white/35 text-xs mt-4">
-          Payments are handled by Stripe. Not sure which option fits? Call Philip at (209) 814-1996 — happy to walk you through it in ten minutes.
+          Payments are handled by Square. Questions? Call Philip at (209) 814-1996 — happy to walk you through it in ten minutes.
         </p>
       </section>
     </main>
