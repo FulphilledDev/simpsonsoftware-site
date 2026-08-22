@@ -1,10 +1,26 @@
 {
-  "generatedAt": "2026-08-21",
-  "counts": { "total": 1, "pitched": 1, "paid": 0, "handed-off": 0, "declined": 0, "no-reply": 0 },
+  "generatedAt": "2026-08-22",
+  "counts": {
+    "total": 1,
+    "pitched": 1,
+    "paid": 0,
+    "handed-off": 0,
+    "declined": 0,
+    "no-reply": 0
+  },
   "revenue": 0,
-  "closeRate": null,
+  "closeRate": 0,
   "avgWallMinutes": 310,
   "projects": [
-    { "slug": "class5fit-sonora", "business": "Class 5 Fitness", "status": "pitched", "price": 400, "wallMinutes": 310, "qaLoops": 3, "leads": 0, "pitchedAt": "2026-08-21" }
+    {
+      "slug": "class5fit-sonora",
+      "business": "Class 5 Fitness",
+      "status": "pitched",
+      "price": 400,
+      "wallMinutes": 310,
+      "qaLoops": 3,
+      "leads": 0,
+      "pitchedAt": "2026-08-21"
+    }
   ]
 }
