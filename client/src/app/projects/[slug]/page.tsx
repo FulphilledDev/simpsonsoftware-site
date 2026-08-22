@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import type { Project } from "@/components/ui/ProjectCard";
 import { resolveAssetUrl } from "@/lib/api";
 import ScreenshotsSlider from "@/components/ui/ScreenshotsSlider";
+import RedesignCaseStudy from "@/components/redesigns/RedesignCaseStudy";
+import { getRedesign } from "@/lib/redesigns";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5149";
 
@@ -42,6 +44,13 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  const redesign = getRedesign(slug);
+  if (redesign) {
+    return {
+      title: `${redesign.business} website redesign | Simpson Software`,
+      description: redesign.whatChanged,
+    };
+  }
   const project = await getProject(slug);
   if (!project) return { title: "Project Not Found | Simpson Software" };
   return {
@@ -56,6 +65,10 @@ export default async function ProjectDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  // Local-business redesigns come from the static feed, not the API
+  const redesign = getRedesign(slug);
+  if (redesign) return <RedesignCaseStudy r={redesign} />;
+
   const project = await getProject(slug);
 
   if (!project) notFound();
