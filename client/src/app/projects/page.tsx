@@ -1,5 +1,7 @@
 import ProjectCard, { type Project } from "@/components/ui/ProjectCard";
 import Link from "next/link";
+import RedesignCard from "@/components/redesigns/RedesignCard";
+import { allRedesigns } from "@/lib/redesigns";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5149";
 
@@ -23,6 +25,7 @@ export const metadata = {
 
 export default async function ProjectsPage() {
   const projects = await getProjects();
+  const redesigns = allRedesigns.filter((r) => r.status !== "declined" && r.status !== "no-reply");
   const featuredCount = projects.filter((p) => p.isFeatured).length;
 
   return (
@@ -51,7 +54,7 @@ export default async function ProjectsPage() {
       {/* Grid */}
       <section className="section-container pb-28">
         {projects.length === 0 ? (
-          <EmptyState />
+          redesigns.length === 0 && <EmptyState />
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project) => (
@@ -60,6 +63,24 @@ export default async function ProjectsPage() {
           </div>
         )}
       </section>
+
+      {/* Local business redesigns (static feed from the redesign pipeline) */}
+      {redesigns.length > 0 && (
+        <section className="section-container pb-28">
+          <div className="space-y-2 max-w-2xl mb-8">
+            <p className="text-neon-cyan/70 text-sm uppercase tracking-widest font-medium">Local business redesigns</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">Rebuilt on spec, owned by the business</h2>
+            <p className="text-white/50 leading-relaxed">
+              Small-business websites rebuilt phone-first with a working contact form, then offered to the owner for a one-time fee &mdash; site, code and domain included.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {redesigns.map((r) => (
+              <RedesignCard key={r.slug} r={r} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="section-container pb-28">
