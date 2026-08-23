@@ -58,7 +58,7 @@ export default function RedesignMetricsPage() {
                 <tr key={p.slug} className="hover:bg-white/[0.02] transition-colors">
                   <td className="px-4 py-3 text-white">{p.business}</td>
                   <td className="px-4 py-3">{p.status}</td>
-                  <td className="px-4 py-3">${p.price}</td>
+                  <td className="px-4 py-3">{p.price != null ? `$${p.price}` : "—"}</td>
                   <td className="px-4 py-3">{p.pitchedAt ?? "—"}</td>
                   <td className="px-4 py-3">{p.wallMinutes ? (p.wallMinutes / 60).toFixed(1) : "—"}</td>
                   <td className="px-4 py-3">{p.qaLoops ?? "—"}</td>

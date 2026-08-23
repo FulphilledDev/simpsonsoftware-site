@@ -34,7 +34,7 @@ export default function RedesignCard({ r }: { r: Redesign }) {
           <h3 className="text-lg font-semibold text-white group-hover:text-neon-cyan transition-colors">{r.business}</h3>
           <p className="text-white/50 text-sm leading-relaxed line-clamp-3">{r.whatChanged}</p>
           {r.status === "pitched" && (
-            <p className="mt-auto pt-2 text-sm text-white/40">One-time {fmtUsd(r.price)} · owner takes everything</p>
+            <p className="mt-auto pt-2 text-sm text-white/40">One-time {fmtUsd(r.price ?? 0)} · owner takes everything</p>
           )}
         </div>
       </div>

@@ -21,7 +21,7 @@ export interface Redesign {
   demoUrl: string;
   status: RedesignStatus;
   pitchedAt: string;
-  price: number; // null in the feed until pitched — every consumer is gated on status === "pitched"
+  price: number | null; // null until pitched — consumers are gated on status === "pitched"
   priceLockedUntil: string;
   discountUntil: string;
   stripePaymentLink: string;
@@ -40,7 +40,7 @@ export interface RedesignMetrics {
     slug: string;
     business: string;
     status: string;
-    price: number;
+    price: number | null;
     wallMinutes: number | null;
     qaLoops: number | null;
     leads: number;
@@ -51,8 +51,8 @@ export interface RedesignMetrics {
 export const REDESIGN_SUFFIX = "-redesign";
 export const DISCOUNT_PCT = 10;
 
-export const allRedesigns = redesigns as Redesign[];
-export const redesignMetrics = metrics as RedesignMetrics;
+export const allRedesigns = redesigns as unknown as Redesign[];
+export const redesignMetrics = metrics as unknown as RedesignMetrics;
 
 export function getRedesign(routeSlug: string): Redesign | null {
   const slug = routeSlug.endsWith(REDESIGN_SUFFIX)
@@ -62,10 +62,11 @@ export function getRedesign(routeSlug: string): Redesign | null {
 }
 
 export function pricing(r: Redesign, now = new Date()) {
+  const full = r.price ?? 0; // pre-pitch entries have no price; consumers gate on status === "pitched"
   const discountActive = now <= new Date(r.discountUntil + "T23:59:59");
   const lockActive = now <= new Date(r.priceLockedUntil + "T23:59:59");
-  const discounted = Math.round(r.price * (1 - DISCOUNT_PCT / 100));
-  return { discountActive, lockActive, discounted, full: r.price };
+  const discounted = Math.round(full * (1 - DISCOUNT_PCT / 100));
+  return { discountActive, lockActive, discounted, full };
 }
 
 export const fmtDate = (iso: string) =>

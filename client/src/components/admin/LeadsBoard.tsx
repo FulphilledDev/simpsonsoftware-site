@@ -7,7 +7,7 @@ import GlassCard from "@/components/ui/GlassCard";
 
 type LeadStatus = "opened" | "held" | "dropped";
 
-type Lead = {
+export type Lead = {
   business: string;
   city: string;
   vertical: string;
@@ -117,7 +117,7 @@ function DetailModal({ l, onClose }: { l: Lead; onClose: () => void }) {
             {l.issue != null && <span className="px-2 py-0.5 rounded border bg-white/5 text-white/50 border-white/10">issue #{l.issue}</span>}
           </div>
           <dl className="space-y-2.5 text-sm">
-            <div><dt className="text-white/30 text-xs uppercase tracking-wider">Why it's here</dt><dd className="text-white/70 mt-0.5">{l.reason}</dd></div>
+            <div><dt className="text-white/30 text-xs uppercase tracking-wider">Why it&apos;s here</dt><dd className="text-white/70 mt-0.5">{l.reason}</dd></div>
             {l.signal && <div><dt className="text-white/30 text-xs uppercase tracking-wider">Qualifying signal</dt><dd className="text-white/70 mt-0.5">{l.signal}</dd></div>}
             {l.reach && <div><dt className="text-white/30 text-xs uppercase tracking-wider">Reachability</dt><dd className="text-white/70 mt-0.5">{l.reach}</dd></div>}
             {l.prize && (
@@ -153,7 +153,7 @@ function DetailModal({ l, onClose }: { l: Lead; onClose: () => void }) {
 // ── Board ──────────────────────────────────────────────────────────────────
 
 export default function LeadsBoard({ generatedAt, leads }: { generatedAt: string; leads: Lead[] }) {
-  const cities = useMemo(() => [...new Set(leads.map((l) => l.city))].sort(), [leads]);
+  const cities = useMemo(() => Array.from(new Set(leads.map((l) => l.city))).sort(), [leads]);
   const [city, setCity] = useState<string>(cities[0] ?? "");
   const [statusFilter, setStatusFilter] = useState<LeadStatus | null>(null);
   const [q, setQ] = useState("");
