@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-22",
+  "generatedAt": "2026-08-23",
   "leads": [
     {
       "business": "Zurdo Montanez Boxing Gym LLC",
@@ -22,12 +22,12 @@
       },
       "noSite": true,
       "status": "opened",
-      "reason": "Prize 14/15 \u2014 No website at all \u2014 Maps listing only",
+      "reason": "Prize 14/15 — No website at all — Maps listing only",
       "screenedAt": "2026-08-22",
       "issue": 2,
       "addr": "Charleston & Marion, Las Vegas, NV 89110",
       "phone": "(702) 800-9654",
-      "signal": "No website at all \u2014 Maps listing only",
+      "signal": "No website at all — Maps listing only",
       "reach": "Owner is the namesake (Zurdo Montanez); direct line; walk-in gym"
     },
     {
@@ -51,12 +51,12 @@
       },
       "noSite": false,
       "status": "opened",
-      "reason": "Prize 14/15 \u2014 Serves over http:// with no https redirect; WordPress 'Pro' theme; no copyright year in footer \u2014 age unconfirmed, audit to settle",
+      "reason": "Prize 14/15 — Serves over http:// with no https redirect; WordPress 'Pro' theme; no copyright year in footer — age unconfirmed, audit to settle",
       "screenedAt": "2026-08-22",
       "issue": 3,
       "addr": "3430 E Tropicana Ave Ste 61, Las Vegas, NV 89121",
       "phone": "(702) 433-0061",
-      "signal": "Serves over http:// with no https redirect; WordPress 'Pro' theme; no copyright year in footer \u2014 age unconfirmed, audit to settle",
+      "signal": "Serves over http:// with no https redirect; WordPress 'Pro' theme; no copyright year in footer — age unconfirmed, audit to settle",
       "reach": "Family-name gym (Capetillo); direct line; walk-in"
     },
     {
@@ -80,12 +80,12 @@
       },
       "noSite": true,
       "status": "opened",
-      "reason": "Prize 13/15 \u2014 No website at all \u2014 Maps listing only",
+      "reason": "Prize 13/15 — No website at all — Maps listing only",
       "screenedAt": "2026-08-22",
       "issue": 4,
       "addr": "7965 S Rainbow Blvd #115, Las Vegas, NV 89139",
       "phone": "(702) 272-1977",
-      "signal": "No website at all \u2014 Maps listing only",
+      "signal": "No website at all — Maps listing only",
       "reach": "Reviews describe the owners as a husband-and-wife couple (not by name); direct line; walk-in"
     },
     {
@@ -109,12 +109,12 @@
       },
       "noSite": false,
       "status": "opened",
-      "reason": "Prize 12/15 \u2014 Weebly free subdomain (reseller); footer \u00a9 2016",
+      "reason": "Prize 12/15 — Weebly free subdomain (reseller); footer © 2016",
       "screenedAt": "2026-08-22",
       "issue": 5,
       "addr": "8445 W Flamingo Rd Ste 1, Las Vegas, NV 89147",
       "phone": "(702) 235-6654",
-      "signal": "Weebly free subdomain (reseller); footer \u00a9 2016",
+      "signal": "Weebly free subdomain (reseller); footer © 2016",
       "reach": "Owner is the namesake (Rangel); direct line; walk-in"
     },
     {
@@ -138,7 +138,7 @@
       },
       "noSite": false,
       "status": "opened",
-      "reason": "Prize 12/15 \u2014 GoDaddy Website Builder (generator: Starfield Technologies) on a .online domain (reseller)",
+      "reason": "Prize 12/15 — GoDaddy Website Builder (generator: Starfield Technologies) on a .online domain (reseller)",
       "screenedAt": "2026-08-22",
       "issue": 6,
       "addr": "4640 E Flamingo Rd, Las Vegas, NV 89121",
@@ -167,12 +167,12 @@
       },
       "noSite": false,
       "status": "opened",
-      "reason": "Prize 12/15 \u2014 WordPress 6.4 on Betheme/WPBakery, footer \u00a9 2019, site lives on an unrelated domain (fvffteam.org) \u2014 looks \u22655 years old",
+      "reason": "Prize 12/15 — WordPress 6.4 on Betheme/WPBakery, footer © 2019, site lives on an unrelated domain (fvffteam.org) — looks ≥5 years old",
       "screenedAt": "2026-08-22",
       "issue": 7,
       "addr": "Northridge Plaza, 3900 N Rancho Dr Ste 101, Las Vegas, NV 89130",
       "phone": "(702) 538-6293",
-      "signal": "WordPress 6.4 on Betheme/WPBakery, footer \u00a9 2019, site lives on an unrelated domain (fvffteam.org) \u2014 looks \u22655 years old",
+      "signal": "WordPress 6.4 on Betheme/WPBakery, footer © 2019, site lives on an unrelated domain (fvffteam.org) — looks ≥5 years old",
       "reach": "Owner is the namesake (Vargas); direct line; walk-in"
     },
     {
@@ -196,12 +196,12 @@
       },
       "noSite": false,
       "status": "opened",
-      "reason": "Prize 12/15 \u2014 No viewport meta tag \u2014 predates responsive design; no copyright year",
+      "reason": "Prize 12/15 — No viewport meta tag — predates responsive design; no copyright year",
       "screenedAt": "2026-08-22",
       "issue": 8,
       "addr": "2350 S Rainbow Blvd Ste 8, Las Vegas, NV 89146",
       "phone": "(702) 276-7692",
-      "signal": "No viewport meta tag \u2014 predates responsive design; no copyright year",
+      "signal": "No viewport meta tag — predates responsive design; no copyright year",
       "reach": "Phone only; no owner named"
     },
     {
@@ -225,12 +225,12 @@
       },
       "noSite": false,
       "status": "held",
-      "reason": "Prize 12 tied with selected leads; lost the tie on reachability (no owner named) \u2014 judgement call, overrule if you want Wix over Smash Iron",
+      "reason": "Prize 12 tied with selected leads; lost the tie on reachability (no owner named) — judgement call, overrule if you want Wix over Smash Iron",
       "screenedAt": "2026-08-22",
       "issue": null,
       "addr": "Las Vegas, NV 89123",
       "phone": "(702) 778-3666",
-      "signal": "Wix, \u00a9 2019"
+      "signal": "Wix, © 2019"
     },
     {
       "business": "Dragon's Lair Gym",
@@ -253,12 +253,12 @@
       },
       "noSite": false,
       "status": "held",
-      "reason": "Prize 12; held \u2014 480 reviews and a maintained Elementor site suggest they already pay for web work; stale \u00a9 only",
+      "reason": "Prize 12; held — 480 reviews and a maintained Elementor site suggest they already pay for web work; stale © only",
       "screenedAt": "2026-08-22",
       "issue": null,
       "addr": "Las Vegas, NV",
       "phone": "(702) 462-6545",
-      "signal": "WordPress/Elementor, footer \u00a9 2014"
+      "signal": "WordPress/Elementor, footer © 2014"
     },
     {
       "business": "Nemea Boxing",
@@ -286,7 +286,7 @@
       "issue": null,
       "addr": "3874 W Sahara Ave, Las Vegas, NV",
       "phone": "(702) 960-3140",
-      "signal": "none \u2014 current WordPress 7, custom theme"
+      "signal": "none — current WordPress 7, custom theme"
     },
     {
       "business": "Next Level Fitness",
@@ -314,7 +314,7 @@
       "issue": null,
       "addr": "9325 S Cimarron Rd, Las Vegas, NV 89178",
       "phone": "(702) 904-8849",
-      "signal": "none \u2014 current WordPress; runs Maps sponsored ads (has a marketing budget)"
+      "signal": "none — current WordPress; runs Maps sponsored ads (has a marketing budget)"
     },
     {
       "business": "Fight Capital Gym",
@@ -342,7 +342,7 @@
       "issue": null,
       "addr": "3071 S Valley View Blvd, Las Vegas, NV",
       "phone": "(702) 248-3432",
-      "signal": "none \u2014 Duda, \u00a9 2026"
+      "signal": "none — Duda, © 2026"
     },
     {
       "business": "Boe Boxing & Fitness",
@@ -370,7 +370,7 @@
       "issue": null,
       "addr": "1801 E Tropicana Ave #19, Las Vegas, NV",
       "phone": "(702) 682-8096",
-      "signal": "Homepage is a 1.8 KB shell \u2014 possibly a redirect/placeholder; unverified"
+      "signal": "Homepage is a 1.8 KB shell — possibly a redirect/placeholder; unverified"
     },
     {
       "business": "Yak's Fitness",
@@ -426,7 +426,7 @@
       "issue": null,
       "addr": "178 N Pecos Rd, Henderson, NV",
       "phone": "(725) 215-0132",
-      "signal": "none \u2014 Astra, \u00a9 2026"
+      "signal": "none — Astra, © 2026"
     },
     {
       "business": "The HIIVE",
@@ -454,7 +454,7 @@
       "issue": null,
       "addr": "Las Vegas, NV",
       "phone": "(702) 297-7139",
-      "signal": "none \u2014 Duda"
+      "signal": "none — Duda"
     },
     {
       "business": "Uprising MMA",
@@ -482,7 +482,7 @@
       "issue": null,
       "addr": "6325 N Commerce St, North Las Vegas, NV",
       "phone": "(702) 337-2612",
-      "signal": "none \u2014 Astra/Elementor, \u00a9 2022"
+      "signal": "none — Astra/Elementor, © 2022"
     },
     {
       "business": "REFINED 24/7 GYM",
@@ -538,7 +538,7 @@
       "issue": null,
       "addr": "Las Vegas, NV 89147",
       "phone": "(702) 892-0400",
-      "signal": "LiveEdit/Mindbody template, \u00a9 2022"
+      "signal": "LiveEdit/Mindbody template, © 2022"
     },
     {
       "business": "Split T Boxing Club",
@@ -566,7 +566,7 @@
       "issue": null,
       "addr": "6320 S Pecos Rd #117, Las Vegas, NV 89120",
       "phone": "(702) 834-7055",
-      "signal": "WordPress/Salient, \u00a9 2023"
+      "signal": "WordPress/Salient, © 2023"
     },
     {
       "business": "Assassin Grappling Academy",
@@ -594,7 +594,7 @@
       "issue": null,
       "addr": "1979 N Nellis Blvd, Las Vegas, NV",
       "phone": "(702) 604-9647",
-      "signal": "none \u2014 \u00a9 2026"
+      "signal": "none — © 2026"
     },
     {
       "business": "DLX Boxing",
@@ -622,7 +622,7 @@
       "issue": null,
       "addr": "3635 S Fort Apache Rd Ste 205, Las Vegas, NV 89147",
       "phone": "(725) 225-2710",
-      "signal": "Wix, \u00a9 2020"
+      "signal": "Wix, © 2020"
     },
     {
       "business": "Redemption Fitness",
@@ -650,7 +650,7 @@
       "issue": null,
       "addr": "2560 Saint Rose Pkwy, Henderson, NV",
       "phone": "(702) 888-1828",
-      "signal": "none \u2014 WordPress/Elementor/WooCommerce"
+      "signal": "none — WordPress/Elementor/WooCommerce"
     },
     {
       "business": "Never QuiT Boxing Gym",
@@ -673,12 +673,12 @@
       },
       "noSite": false,
       "status": "held",
-      "reason": "Prize 7; strong pain (link-in-bio page instead of a site) but 18 reviews and ~8 months quiet \u2014 judgement call, overrule if you want it",
+      "reason": "Prize 7; strong pain (link-in-bio page instead of a site) but 18 reviews and ~8 months quiet — judgement call, overrule if you want it",
       "screenedAt": "2026-08-22",
       "issue": null,
       "addr": "916 N Main St, Las Vegas, NV",
       "phone": "(702) 325-5528",
-      "signal": "Domain redirects to a solo.to link page \u2014 effectively no site"
+      "signal": "Domain redirects to a solo.to link page — effectively no site"
     },
     {
       "business": "Artist Boxing Gym & Fitness",
@@ -701,7 +701,7 @@
       },
       "noSite": false,
       "status": "held",
-      "reason": "Prize 7; newest visible review ~a year old \u2014 borderline on the 12-month rule",
+      "reason": "Prize 7; newest visible review ~a year old — borderline on the 12-month rule",
       "screenedAt": "2026-08-22",
       "issue": null,
       "addr": "3110 E Sunset Rd Ste M, Las Vegas, NV",
@@ -834,7 +834,7 @@
       "prize": null,
       "noSite": false,
       "status": "dropped",
-      "reason": "Could not resolve a Maps listing in two lookups \u2014 judgement call; historic family gym, worth a manual look",
+      "reason": "Could not resolve a Maps listing in two lookups — judgement call; historic family gym, worth a manual look",
       "screenedAt": "2026-08-22",
       "issue": null,
       "addr": "9 W Charleston Blvd, Las Vegas, NV",

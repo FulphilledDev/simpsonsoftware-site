@@ -23,6 +23,10 @@ const navItems = [
   {
     href: "/admin/metrics",
     label: "Redesigns",
+    children: [
+      { href: "/admin/metrics", label: "Metrics" },
+      { href: "/admin/leads", label: "Leads" },
+    ],
     icon: (
       <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -138,23 +142,52 @@ function AdminSidebar() {
       {/* Nav */}
       <nav className="flex-1 py-4 px-3 space-y-0.5">
         {navItems.map((item) => {
-          const isActive = item.exact
-            ? pathname === item.href
-            : pathname.startsWith(item.href);
+          const children = "children" in item ? (item.children as { href: string; label: string }[]) : null;
+          const isActive = children
+            ? children.some((c) => pathname.startsWith(c.href))
+            : item.exact
+              ? pathname === item.href
+              : pathname.startsWith(item.href);
 
           return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
-                isActive
-                  ? "bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/20 shadow-[0_0_12px_rgba(91,200,245,0.08)]"
-                  : "text-white/50 hover:text-white/90 hover:bg-white/[0.04] border border-transparent"
-              }`}
-            >
-              {item.icon}
-              {item.label}
-            </Link>
+            <div key={item.href}>
+              <Link
+                href={item.href}
+                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  isActive
+                    ? "bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/20 shadow-[0_0_12px_rgba(91,200,245,0.08)]"
+                    : "text-white/50 hover:text-white/90 hover:bg-white/[0.04] border border-transparent"
+                }`}
+              >
+                {item.icon}
+                {item.label}
+                {children && (
+                  <svg className={`w-3.5 h-3.5 ml-auto transition-transform duration-200 ${isActive ? "rotate-90" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                )}
+              </Link>
+              {children && isActive && (
+                <div className="mt-0.5 ml-[26px] pl-3 border-l border-white/[0.08] space-y-0.5">
+                  {children.map((c) => {
+                    const childActive = pathname.startsWith(c.href);
+                    return (
+                      <Link
+                        key={c.href}
+                        href={c.href}
+                        className={`block px-3 py-2 rounded-lg text-[13px] font-medium transition-all duration-200 ${
+                          childActive
+                            ? "text-neon-cyan bg-neon-cyan/[0.07]"
+                            : "text-white/40 hover:text-white/80 hover:bg-white/[0.04]"
+                        }`}
+                      >
+                        {c.label}
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
           );
         })}
       </nav>
@@ -197,9 +230,11 @@ function MobileBottomNav() {
   const { logout } = useAuth();
   const [sheetOpen, setSheetOpen] = useState(false);
 
-  const isMoreActive = moreNavItems.some((item) =>
-    item.exact ? pathname === item.href : pathname.startsWith(item.href)
-  );
+  const isMoreActive = moreNavItems.some((item) => {
+    const children = "children" in item ? (item.children as { href: string; label: string }[]) : null;
+    if (children) return children.some((c) => pathname.startsWith(c.href));
+    return item.exact ? pathname === item.href : pathname.startsWith(item.href);
+  });
 
   return (
     <>
@@ -270,9 +305,12 @@ function MobileBottomNav() {
           {/* Sheet nav items */}
           <div className="px-4 py-3 space-y-1">
             {moreNavItems.map((item) => {
-              const isActive = item.exact
-                ? pathname === item.href
-                : pathname.startsWith(item.href);
+              const children = "children" in item ? (item.children as { href: string; label: string }[]) : null;
+              const isActive = children
+                ? children.some((c) => pathname.startsWith(c.href))
+                : item.exact
+                  ? pathname === item.href
+                  : pathname.startsWith(item.href);
               return (
                 <Link
                   key={item.href}
