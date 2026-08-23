@@ -5,7 +5,7 @@ import type { Project } from "@/components/ui/ProjectCard";
 import { resolveAssetUrl } from "@/lib/api";
 import ScreenshotsSlider from "@/components/ui/ScreenshotsSlider";
 import RedesignCaseStudy from "@/components/redesigns/RedesignCaseStudy";
-import { getRedesign } from "@/lib/redesigns";
+import { getRedesign, isPublic } from "@/lib/redesigns";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5149";
 
@@ -67,6 +67,7 @@ export default async function ProjectDetailPage({
   const { slug } = await params;
   // Local-business redesigns come from the static feed, not the API
   const redesign = getRedesign(slug);
+  if (redesign && !isPublic(redesign)) notFound(); // built / archived demos are not public
   if (redesign) return <RedesignCaseStudy r={redesign} />;
 
   const project = await getProject(slug);

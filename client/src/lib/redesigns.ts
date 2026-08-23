@@ -4,7 +4,12 @@
 import redesigns from "@/data/redesigns.json";
 import metrics from "@/data/redesign-metrics.json";
 
-export type RedesignStatus = "pitched" | "paid" | "handed-off" | "declined" | "no-reply";
+// "built" is pre-pitch: deployed and in review, not yet offered to the owner (no price, no dates).
+export type RedesignStatus = "built" | "pitched" | "paid" | "handed-off" | "declined" | "no-reply";
+
+/** Statuses the public site shows (a built demo stays private until it is pitched). */
+export const PUBLIC_STATUSES: RedesignStatus[] = ["pitched", "paid", "handed-off"];
+export const isPublic = (r: { status: RedesignStatus }) => PUBLIC_STATUSES.includes(r.status);
 
 export interface Redesign {
   slug: string;
@@ -16,10 +21,11 @@ export interface Redesign {
   demoUrl: string;
   status: RedesignStatus;
   pitchedAt: string;
-  price: number;
+  price: number; // null in the feed until pitched — every consumer is gated on status === "pitched"
   priceLockedUntil: string;
   discountUntil: string;
   stripePaymentLink: string;
+  issue?: number;
   whatChanged: string;
   leads: number;
 }

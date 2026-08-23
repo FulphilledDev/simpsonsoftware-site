@@ -1,7 +1,7 @@
 import ProjectCard, { type Project } from "@/components/ui/ProjectCard";
 import Link from "next/link";
 import RedesignCard from "@/components/redesigns/RedesignCard";
-import { allRedesigns } from "@/lib/redesigns";
+import { allRedesigns, isPublic } from "@/lib/redesigns";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5149";
 
@@ -25,7 +25,7 @@ export const metadata = {
 
 export default async function ProjectsPage() {
   const projects = await getProjects();
-  const redesigns = allRedesigns.filter((r) => r.status !== "declined" && r.status !== "no-reply");
+  const redesigns = allRedesigns.filter(isPublic);
   const featuredCount = projects.filter((p) => p.isFeatured).length;
 
   return (

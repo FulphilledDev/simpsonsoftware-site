@@ -2,6 +2,7 @@ import Link from "next/link";
 import { type Redesign, REDESIGN_SUFFIX, fmtUsd } from "@/lib/redesigns";
 
 const badge: Record<Redesign["status"], string | null> = {
+  built: null, // pre-pitch — never listed publicly anyway
   pitched: "Demo live",
   paid: "Purchased",
   "handed-off": "Live",

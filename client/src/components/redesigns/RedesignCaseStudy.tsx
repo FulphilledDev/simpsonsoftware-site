@@ -2,6 +2,7 @@ import Link from "next/link";
 import { type Redesign, pricing, fmtDate, fmtUsd, REDESIGN_SUFFIX } from "@/lib/redesigns";
 
 const statusLabel: Record<Redesign["status"], string> = {
+  built: "Built — in review, not yet offered",
   pitched: "Demo live — awaiting the owner",
   paid: "Purchased",
   "handed-off": "Live on the owner's domain",
@@ -10,7 +11,7 @@ const statusLabel: Record<Redesign["status"], string> = {
 };
 
 export default function RedesignCaseStudy({ r }: { r: Redesign }) {
-  const p = pricing(r);
+  const p = pricing(r); // price/dates are empty until pitched; only rendered when purchasable
   const purchasable = r.status === "pitched";
   const purchaseHref = `/projects/${r.slug}${REDESIGN_SUFFIX}/purchase`;
 
