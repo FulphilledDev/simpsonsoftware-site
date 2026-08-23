@@ -11,7 +11,7 @@
   },
   "revenue": 0,
   "closeRate": 0,
-  "avgWallMinutes": 310,
+  "avgWallMinutes": 161,
   "projects": [
     {
       "slug": "class5fit-sonora",
@@ -28,8 +28,8 @@
       "business": "El Zurdo Montañez Boxing Gym",
       "status": "built",
       "price": null,
-      "wallMinutes": null,
-      "qaLoops": null,
+      "wallMinutes": 12,
+      "qaLoops": 3,
       "leads": 0,
       "pitchedAt": ""
     }
