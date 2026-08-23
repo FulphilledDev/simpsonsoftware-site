@@ -224,10 +224,10 @@
         "total": 12
       },
       "noSite": false,
-      "status": "held",
-      "reason": "Prize 12 tied with selected leads; lost the tie on reachability (no owner named) — judgement call, overrule if you want Wix over Smash Iron",
+      "status": "opened",
+      "reason": "Prize 12 tied with selected leads; lost the tie on reachability (no owner named) — judgement call, overrule if you want Wix over Smash Iron — overruled by Philip 2026-08-23, opened as #9",
       "screenedAt": "2026-08-22",
-      "issue": null,
+      "issue": 9,
       "addr": "Las Vegas, NV 89123",
       "phone": "(702) 778-3666",
       "signal": "Wix, © 2019"
@@ -364,13 +364,13 @@
         "total": 11
       },
       "noSite": false,
-      "status": "held",
-      "reason": "Prize 11; site needs a proper look before spending an audit",
+      "status": "dropped",
+      "reason": "No-go: professional custom site (React SPA, current design, award badge, full proof stack) — nothing to rebuild. Denied by Philip after manual review 2026-08-23; harvested to template/references/gym-fitness.md",
       "screenedAt": "2026-08-22",
       "issue": null,
       "addr": "1801 E Tropicana Ave #19, Las Vegas, NV",
       "phone": "(702) 682-8096",
-      "signal": "Homepage is a 1.8 KB shell — possibly a redirect/placeholder; unverified"
+      "signal": "custom React build, © 2026 — professionally designed"
     },
     {
       "business": "Yak's Fitness",
