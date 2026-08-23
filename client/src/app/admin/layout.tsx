@@ -25,6 +25,7 @@ const navItems = [
     label: "Redesigns",
     children: [
       { href: "/admin/metrics", label: "Metrics" },
+      { href: "/admin/builds", label: "Builds" },
       { href: "/admin/leads", label: "Leads" },
     ],
     icon: (

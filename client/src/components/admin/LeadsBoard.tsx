@@ -52,6 +52,52 @@ function PrizeBar({ prize }: { prize: Lead["prize"] }) {
   );
 }
 
+function Decision({ issue, business }: { issue: number; business: string }) {
+  const [note, setNote] = useState("");
+  const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
+  const [msg, setMsg] = useState("");
+
+  async function decide(verdict: "Approved" | "Denied") {
+    setState("sending");
+    const body =
+      verdict === "Approved"
+        ? `**Approved by Philip (dashboard)** — resolve any named holds and proceed to /dossier.${note.trim() ? `\n\n${note.trim()}` : ""}`
+        : `**Denied by Philip (dashboard)** — close as wontfix / outcome:no-go.${note.trim() ? `\n\nReason: ${note.trim()}` : ""}`;
+    try {
+      const r = await fetch("/api/admin/gh", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ issueNumber: issue, comment: body }),
+      });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error ?? "failed");
+      setState("done");
+      setMsg(`${verdict} — posted to issue #${issue}; the agent executes it next run.`);
+    } catch (e) {
+      setState("error");
+      setMsg(e instanceof Error ? e.message : "Failed to post");
+    }
+  }
+
+  if (state === "done") return <p className="text-emerald-400/80 text-xs">{msg}</p>;
+  return (
+    <div className="space-y-2 pt-3 border-t border-white/5">
+      <p className="text-white/30 text-xs uppercase tracking-wider">Your call on {business}</p>
+      <input
+        value={note}
+        onChange={(e) => setNote(e.target.value)}
+        placeholder="Optional note — e.g. use the IG profile mark as the logo…"
+        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-neon-cyan/40"
+      />
+      <div className="flex items-center gap-2">
+        <button onClick={() => decide("Approved")} disabled={state === "sending"} className="px-4 py-1.5 rounded-lg text-sm font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/25 disabled:opacity-40 transition-colors">Approve</button>
+        <button onClick={() => decide("Denied")} disabled={state === "sending"} className="px-4 py-1.5 rounded-lg text-sm font-semibold bg-red-500/10 text-red-400 border border-red-500/30 hover:bg-red-500/20 disabled:opacity-40 transition-colors">Deny</button>
+        {state === "error" && <span className="text-red-400/80 text-xs">{msg}</span>}
+      </div>
+    </div>
+  );
+}
+
 function DetailModal({ l, onClose }: { l: Lead; onClose: () => void }) {
   const m = STATUS_META[l.status];
   return (
@@ -92,6 +138,7 @@ function DetailModal({ l, onClose }: { l: Lead; onClose: () => void }) {
             </div>
             {l.addr && <p className="text-white/50 text-xs">{l.addr}</p>}
           </dl>
+          {l.issue != null && l.status === "opened" && <Decision issue={l.issue} business={l.business} />}
           <div className="flex flex-wrap gap-4 text-xs pt-1 border-t border-white/5">
             <a href={l.mapsUrl} target="_blank" rel="noreferrer" className="text-neon-cyan hover:underline pt-3">Maps ↗</a>
             {l.url && <a href={l.url} target="_blank" rel="noreferrer" className="text-neon-cyan hover:underline pt-3">Website ↗</a>}
