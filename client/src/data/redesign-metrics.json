@@ -1,7 +1,8 @@
 {
-  "generatedAt": "2026-08-22",
+  "generatedAt": "2026-08-23",
   "counts": {
-    "total": 1,
+    "total": 2,
+    "built": 1,
     "pitched": 1,
     "paid": 0,
     "handed-off": 0,
@@ -21,6 +22,16 @@
       "qaLoops": 3,
       "leads": 0,
       "pitchedAt": "2026-08-21"
+    },
+    {
+      "slug": "zurdo-montanez-boxing-las-vegas",
+      "business": "El Zurdo Montañez Boxing Gym",
+      "status": "built",
+      "price": null,
+      "wallMinutes": null,
+      "qaLoops": null,
+      "leads": 0,
+      "pitchedAt": ""
     }
   ]
 }

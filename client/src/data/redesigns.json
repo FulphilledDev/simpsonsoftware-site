@@ -11,9 +11,28 @@
     "pitchedAt": "2026-08-21",
     "price": 400,
     "priceLockedUntil": "2026-09-20",
-    "discountUntil": "2026-08-21",
+    "discountUntil": "2026-09-04",
     "stripePaymentLink": "",
     "whatChanged": "A 2-field form that went nowhere became a branded inbox with the visitor's intent attached; ten five-star reviews moved from the bottom of a desktop-only page to the front of a phone-first one. One tap to call, one to get directions.",
-    "leads": 0
+    "leads": 0,
+    "issue": 1
+  },
+  {
+    "slug": "zurdo-montanez-boxing-las-vegas",
+    "business": "El Zurdo Montañez Boxing Gym",
+    "city": "Las Vegas, NV",
+    "vertical": "gym-fitness",
+    "beforeImage": "/redesigns/zurdo-montanez-boxing-las-vegas/before-desktop.jpg",
+    "afterImage": "",
+    "demoUrl": "https://zurdo-montanez-boxing-las-vegas.pages.dev",
+    "status": "built",
+    "pitchedAt": "",
+    "price": null,
+    "priceLockedUntil": "",
+    "discountUntil": "",
+    "stripePaymentLink": "",
+    "whatChanged": "No website at all — a Google pin on the wrong corner, no hours, no link. Now a phone-first page in the gym’s own red and black: the ZMZ mark redrawn, the kids program front and centre, one tap to call, one to get directions.",
+    "leads": 0,
+    "issue": 2
   }
 ]
