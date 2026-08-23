@@ -21,12 +21,12 @@ const navItems = [
     exact: true,
   },
   {
-    href: "/admin/metrics",
+    href: "/admin/leads",
     label: "Redesigns",
     children: [
-      { href: "/admin/metrics", label: "Metrics" },
-      { href: "/admin/builds", label: "Builds" },
       { href: "/admin/leads", label: "Leads" },
+      { href: "/admin/builds", label: "Builds" },
+      { href: "/admin/metrics", label: "Metrics" },
     ],
     icon: (
       <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

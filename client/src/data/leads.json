@@ -28,7 +28,12 @@
       "addr": "Charleston & Marion, Las Vegas, NV 89110",
       "phone": "(702) 800-9654",
       "signal": "No website at all — Maps listing only",
-      "reach": "Owner is the namesake (Zurdo Montanez); direct line; walk-in gym"
+      "reach": "Owner is the namesake (Zurdo Montanez); direct line; walk-in gym",
+      "slug": "zurdo-montanez-boxing-las-vegas",
+      "stage": "qa-passed",
+      "verdict": "go",
+      "autoQualify": false,
+      "pendingDecision": false
     },
     {
       "business": "Capetillo Boxing Gym",
@@ -57,7 +62,12 @@
       "addr": "3430 E Tropicana Ave Ste 61, Las Vegas, NV 89121",
       "phone": "(702) 433-0061",
       "signal": "Serves over http:// with no https redirect; WordPress 'Pro' theme; no copyright year in footer — age unconfirmed, audit to settle",
-      "reach": "Family-name gym (Capetillo); direct line; walk-in"
+      "reach": "Family-name gym (Capetillo); direct line; walk-in",
+      "slug": "capetillo-boxing-gym-las-vegas",
+      "stage": "audited",
+      "verdict": "go",
+      "autoQualify": true,
+      "pendingDecision": false
     },
     {
       "business": "TortureGym Las Vegas",
@@ -78,15 +88,20 @@
         },
         "total": 13
       },
-      "noSite": true,
-      "status": "opened",
-      "reason": "Prize 13/15 — No website at all — Maps listing only",
+      "noSite": false,
+      "status": "dropped",
+      "reason": "Audit no-go: Already on a modern custom build (row 1 = 0 and row 2 = 0) AND total 6 <= 12: the site is adequate; a rebuild has no story. The /leads 'no website' signal was stale: Google's listing lacks the link, but torturegym.com is live, (c) 2026.",
       "screenedAt": "2026-08-22",
       "issue": 4,
       "addr": "7965 S Rainbow Blvd #115, Las Vegas, NV 89139",
       "phone": "(702) 272-1977",
       "signal": "No website at all — Maps listing only",
-      "reach": "Reviews describe the owners as a husband-and-wife couple (not by name); direct line; walk-in"
+      "reach": "Reviews describe the owners as a husband-and-wife couple (not by name); direct line; walk-in",
+      "slug": "torturegym-las-vegas",
+      "stage": "audited",
+      "verdict": "no-go",
+      "autoQualify": null,
+      "pendingDecision": false
     },
     {
       "business": "Rangel Boxing Las Vegas",
@@ -115,7 +130,12 @@
       "addr": "8445 W Flamingo Rd Ste 1, Las Vegas, NV 89147",
       "phone": "(702) 235-6654",
       "signal": "Weebly free subdomain (reseller); footer © 2016",
-      "reach": "Owner is the namesake (Rangel); direct line; walk-in"
+      "reach": "Owner is the namesake (Rangel); direct line; walk-in",
+      "slug": "rangel-boxing-las-vegas",
+      "stage": "audited",
+      "verdict": "go",
+      "autoQualify": false,
+      "pendingDecision": true
     },
     {
       "business": "Las Vegas Fight Club",
@@ -144,7 +164,12 @@
       "addr": "4640 E Flamingo Rd, Las Vegas, NV 89121",
       "phone": "(702) 773-6263",
       "signal": "GoDaddy Website Builder (generator: Starfield Technologies) on a .online domain (reseller)",
-      "reach": "Phone only; no owner named"
+      "reach": "Phone only; no owner named",
+      "slug": "las-vegas-fight-club-las-vegas",
+      "stage": "audited",
+      "verdict": "go",
+      "autoQualify": true,
+      "pendingDecision": false
     },
     {
       "business": "Vargas Boxing Gym",
@@ -173,7 +198,12 @@
       "addr": "Northridge Plaza, 3900 N Rancho Dr Ste 101, Las Vegas, NV 89130",
       "phone": "(702) 538-6293",
       "signal": "WordPress 6.4 on Betheme/WPBakery, footer © 2019, site lives on an unrelated domain (fvffteam.org) — looks ≥5 years old",
-      "reach": "Owner is the namesake (Vargas); direct line; walk-in"
+      "reach": "Owner is the namesake (Vargas); direct line; walk-in",
+      "slug": "vargas-boxing-gym-las-vegas",
+      "stage": "audited",
+      "verdict": "go",
+      "autoQualify": false,
+      "pendingDecision": true
     },
     {
       "business": "Smash Iron Fitness",
@@ -202,7 +232,12 @@
       "addr": "2350 S Rainbow Blvd Ste 8, Las Vegas, NV 89146",
       "phone": "(702) 276-7692",
       "signal": "No viewport meta tag — predates responsive design; no copyright year",
-      "reach": "Phone only; no owner named"
+      "reach": "Phone only; no owner named",
+      "slug": "smash-iron-fitness-las-vegas",
+      "stage": "audited",
+      "verdict": "go",
+      "autoQualify": false,
+      "pendingDecision": true
     },
     {
       "business": "Motum Athletics & Fitness",
@@ -230,7 +265,12 @@
       "issue": 9,
       "addr": "Las Vegas, NV 89123",
       "phone": "(702) 778-3666",
-      "signal": "Wix, © 2019"
+      "signal": "Wix, © 2019",
+      "slug": "motum-athletics-las-vegas",
+      "stage": "audited",
+      "verdict": "go",
+      "autoQualify": false,
+      "pendingDecision": true
     },
     {
       "business": "Dragon's Lair Gym",
