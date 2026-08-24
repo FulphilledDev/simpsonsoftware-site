@@ -988,7 +988,7 @@
       "outOfBand": true,
       "demo": true,
       "slug": "rodeo-logistics",
-      "stage": "deployed",
+      "stage": "qa-passed",
       "verdict": "go",
       "autoQualify": false,
       "pendingDecision": false
