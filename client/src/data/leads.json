@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-23",
+  "generatedAt": "2026-08-24",
   "leads": [
     {
       "business": "Zurdo Montanez Boxing Gym LLC",
@@ -956,6 +956,42 @@
       "addr": "7469 W Lake Mead Blvd, Las Vegas, NV",
       "phone": null,
       "signal": null
+    },
+    {
+      "business": "Rodeo Logistics",
+      "city": "Austin, TX",
+      "vertical": "event-tech",
+      "url": "https://rodeologistics.co/",
+      "mapsUrl": null,
+      "reviews": null,
+      "rating": null,
+      "lastReviewAt": "2025-06-19",
+      "prize": {
+        "rows": {
+          "Demand proof": 2,
+          "Aliveness": 3,
+          "Reachability": 3,
+          "Proximity": 3,
+          "Cluster fit": 0
+        },
+        "total": 11
+      },
+      "noSite": false,
+      "status": "opened",
+      "reason": "Out-of-band demo (Philip's employer) — WordPress/Elementor site undersells the product; no contact path on the homepage",
+      "screenedAt": "2026-08-24",
+      "issue": 10,
+      "addr": null,
+      "phone": "(903) 287-7852",
+      "signal": "WordPress + Elementor, last modified July 2024; placeholder testimonial avatars; no phone/email/address on the homepage",
+      "reach": "Philip works there — leadership via internal channels; no cold outreach",
+      "outOfBand": true,
+      "demo": true,
+      "slug": "rodeo-logistics",
+      "stage": "deployed",
+      "verdict": "go",
+      "autoQualify": false,
+      "pendingDecision": false
     }
   ]
 }
