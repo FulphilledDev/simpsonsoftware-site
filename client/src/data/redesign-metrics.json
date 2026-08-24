@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-23",
+  "generatedAt": "2026-08-24",
   "counts": {
-    "total": 2,
-    "built": 1,
+    "total": 3,
+    "built": 2,
     "pitched": 1,
     "paid": 0,
     "handed-off": 0,
@@ -29,6 +29,16 @@
       "status": "built",
       "price": null,
       "wallMinutes": 12,
+      "qaLoops": 3,
+      "leads": 0,
+      "pitchedAt": ""
+    },
+    {
+      "slug": "rodeo-logistics",
+      "business": "Rodeo Logistics",
+      "status": "built",
+      "price": null,
+      "wallMinutes": null,
       "qaLoops": 3,
       "leads": 0,
       "pitchedAt": ""
