@@ -15,7 +15,8 @@
     "stripePaymentLink": "",
     "whatChanged": "A 2-field form that went nowhere became a branded inbox with the visitor's intent attached; ten five-star reviews moved from the bottom of a desktop-only page to the front of a phone-first one. One tap to call, one to get directions.",
     "leads": 0,
-    "issue": 1
+    "issue": 1,
+    "qaPassedAt": ""
   },
   {
     "slug": "zurdo-montanez-boxing-las-vegas",
@@ -33,7 +34,8 @@
     "stripePaymentLink": "",
     "whatChanged": "No website at all — a Google pin on the wrong corner, no hours, no link. Now a phone-first page in the gym’s own red and black: the ZMZ mark redrawn, the kids program front and centre, one tap to call, one to get directions.",
     "leads": 0,
-    "issue": 2
+    "issue": 2,
+    "qaPassedAt": ""
   },
   {
     "slug": "rodeo-logistics",
@@ -52,6 +54,7 @@
     "whatChanged": "Out-of-band reference build (Philip's employer), not pitched. A WordPress/Elementor brochure with no contact path on the homepage and placeholder testimonial avatars became the pipeline's first multi-page site: the Rodeo Logistics mark redrawn as SVG and put back on top, the three products as one family with a lane for producers and a lane for contestants, real client testimonials, one demo CTA everywhere.",
     "leads": 0,
     "issue": 10,
-    "outOfBand": true
+    "outOfBand": true,
+    "qaPassedAt": ""
   }
 ]
