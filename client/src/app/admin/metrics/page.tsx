@@ -32,11 +32,12 @@ export default function RedesignMetricsPage() {
         </div>
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
         <Stat label="Built" value={String(c.total)} sub={`${open.length} awaiting an owner`} />
         <Stat label="Paid" value={String(closed)} sub={closeRate === null ? "no pitches resolved yet" : `${closeRate}% close rate`} accent="purple" />
         <Stat label="Revenue" value={`$${m.revenue.toLocaleString()}`} sub="one-time fees collected" accent="amber" />
         <Stat label="Avg build time" value={m.avgWallMinutes ? `${(m.avgWallMinutes / 60).toFixed(1)} h` : "—"} sub="wall-clock, all stages" />
+        <Stat label="Goal: $10k / mo" value={`${Math.min(100, Math.round((m.revenue / 10000) * 100))}%`} sub={`$${m.revenue.toLocaleString()} of $10,000 — tier 3 ladder: 4–5 sales/mo + retainers`} accent="amber" />
       </div>
 
       <GlassCard padding="none">

@@ -67,7 +67,7 @@ export default async function ProjectDetailPage({
   const { slug } = await params;
   // Local-business redesigns come from the static feed, not the API
   const redesign = getRedesign(slug);
-  if (redesign && !isPublic(redesign)) notFound(); // built / archived demos are not public
+  if (redesign && !isPublic(redesign)) notFound(); // pre-QA builds and archived demos are not public
   if (redesign) return <RedesignCaseStudy r={redesign} />;
 
   const project = await getProject(slug);

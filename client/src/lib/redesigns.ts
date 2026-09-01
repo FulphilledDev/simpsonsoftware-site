@@ -7,9 +7,11 @@ import metrics from "@/data/redesign-metrics.json";
 // "built" is pre-pitch: deployed and in review, not yet offered to the owner (no price, no dates).
 export type RedesignStatus = "built" | "pitched" | "paid" | "handed-off" | "declined" | "no-reply";
 
-/** Statuses the public site shows (a built demo stays private until it is pitched). */
+/** Statuses the public site always shows. A built demo joins them once QA has passed
+ * (`qaPassedAt`, published from the pipeline's metrics); only pitched entries are purchasable. */
 export const PUBLIC_STATUSES: RedesignStatus[] = ["pitched", "paid", "handed-off"];
-export const isPublic = (r: { status: RedesignStatus }) => PUBLIC_STATUSES.includes(r.status);
+export const isPublic = (r: { status: RedesignStatus; qaPassedAt?: string }) =>
+  PUBLIC_STATUSES.includes(r.status) || (r.status === "built" && !!r.qaPassedAt);
 
 export interface Redesign {
   slug: string;
@@ -20,6 +22,7 @@ export interface Redesign {
   afterImage: string;
   demoUrl: string;
   status: RedesignStatus;
+  qaPassedAt?: string; // ISO date once the pipeline's QA passed — makes a built demo public
   pitchedAt: string;
   price: number | null; // null until pitched — consumers are gated on status === "pitched"
   priceLockedUntil: string;

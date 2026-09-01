@@ -27,6 +27,8 @@ const navItems = [
       { href: "/admin/leads", label: "Leads" },
       { href: "/admin/builds", label: "Builds" },
       { href: "/admin/metrics", label: "Metrics" },
+      { href: "/admin/ops", label: "Ops" },
+      { href: "/admin/reports", label: "Reports" },
     ],
     icon: (
       <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { type Redesign, pricing, fmtDate, fmtUsd, REDESIGN_SUFFIX } from "@/lib/redesigns";
 
 const statusLabel: Record<Redesign["status"], string> = {
-  built: "Built — in review, not yet offered",
+  built: "Demo live — built and QA-passed; not offered for purchase yet",
   pitched: "Demo live — awaiting the owner",
   paid: "Purchased",
   "handed-off": "Live on the owner's domain",
