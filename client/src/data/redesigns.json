@@ -35,7 +35,7 @@
     "whatChanged": "No website at all — a Google pin on the wrong corner, no hours, no link. Now a phone-first page in the gym’s own red and black: the ZMZ mark redrawn, the kids program front and centre, one tap to call, one to get directions.",
     "leads": 0,
     "issue": 2,
-    "qaPassedAt": ""
+    "qaPassedAt": "2026-08-22"
   },
   {
     "slug": "rodeo-logistics",
@@ -55,6 +55,6 @@
     "leads": 0,
     "issue": 10,
     "outOfBand": true,
-    "qaPassedAt": ""
+    "qaPassedAt": "2026-09-01"
   }
 ]
